@@ -1,0 +1,8 @@
+<% if (it.ts) { %>
+<script lang="ts">
+<% } else { %>
+<script>
+<% } %>
+  export let data;
+</script>
+<h1>{data.pathName} created!</h1>

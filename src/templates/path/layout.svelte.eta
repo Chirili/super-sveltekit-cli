@@ -1,0 +1,6 @@
+<script>
+    //Cool stuff here
+</script>
+
+
+<slot/>

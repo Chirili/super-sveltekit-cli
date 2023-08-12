@@ -1,0 +1,7 @@
+/** @type {import('./$types').PageServerLoad} */
+export async function load({ params }) {
+    // Your custom functionality here
+    return {
+        pathName: <%= it.name %>
+    };
+}
