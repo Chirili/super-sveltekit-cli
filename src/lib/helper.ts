@@ -1,11 +1,8 @@
 import { Eta } from "eta";
 import fs from "fs";
-import {  LOCAL_ROUTES_PATH, __dirname } from "../constants.js";
+import {  LOCAL_SRC_PATH, PROJECT_SRC_PATH } from "../constants.js";
 
-
-export function generateFile() {}
-
-export const eta = new Eta({ views: `${__dirname}/templates` });
+export const eta = new Eta({ views: `${PROJECT_SRC_PATH}/src/templates` });
 
 /**
  * Generates a file from a template file path in the selected path
@@ -22,19 +19,16 @@ export const generateFileFromTemplate = (
 ) => {
   let tsConfig: boolean = fs.existsSync("tsconfig.json");;
   let fileDataString: string = "";
-  if (route.includes("/") || !route.startsWith("/")) {
-    route = "/" + route;
-  }
-  if (route && !route.endsWith("/")) {
-    //If the route exists we must concat /src/routes to the path that comes from the path
-    route += "/";
-    route = LOCAL_ROUTES_PATH + route;
-  }
-
+  
   if (!route) {
     // If the route is null will take the default routes path in sveltekit: /src/routes
-    route = LOCAL_ROUTES_PATH + "/";
+    process.exit(1)
   }
+  if(!route.endsWith("/")){
+    route+= "/"
+  }
+  
+  route = LOCAL_SRC_PATH + route
   if (!fs.existsSync(route)) {
     // Checks if folder exists
     fs.mkdirSync(route, { recursive: true });

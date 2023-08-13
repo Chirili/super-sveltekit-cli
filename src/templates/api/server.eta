@@ -1,0 +1,35 @@
+
+<% if(it.get || it.crud){ %>
+/** @type {import('./$types').RequestHandler} */
+export function GET({}) {
+    return new Response();
+}
+<%}%>
+
+<% if(it.post || it.crud){ %>
+/** @type {import('./$types').RequestHandler} */
+export function POST({}) {
+    return new Response();
+}
+<%}%>
+
+<% if(it.put || it.crud){ %>
+/** @type {import('./$types').RequestHandler} */
+export function PUT({}) {
+    return new Response();
+}
+<%}%>
+
+<% if(it.put || it.crud){ %>
+/** @type {import('./$types').RequestHandler} */
+export function PATCH({}) {
+    return new Response();
+}
+<%}%>
+
+<% if(it.put || it.crud){ %>
+/** @type {import('./$types').RequestHandler} */
+export function DELETE({}) {
+    return new Response();
+}
+<%}%>

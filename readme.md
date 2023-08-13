@@ -1,4 +1,4 @@
-# Documentation of Super SvelteKit CLI
+# ⚒️ Super SvelteKit CLI 🧰
 
 ### What is Super Sveltekit CLI?
 
@@ -8,38 +8,83 @@ The tool will expand by adding integrations with other libraries, creating examp
 
 The good thing is that you can start using it since it is not a dependency but a tool, so although it is in an early stage of development maybe it can be useful.
 
+The command will automatically watch for typescript, so it will generate server.js or server.ts for example depending of your setup.
 
+## Installation 🛬
 
-## Commands available
+```
+npm i -g super-sveltekit-cli
+```
+PNPM
+```
+pnpm i -g super-sveltekit-cli
+```
 
-<table>
-    <thead>
-        <tr>
-            <th>Command</th>
-            <th>Flags</th>
-            <th>Alias</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan="2">Create</td> 
-            <td>c</td>
-        </tr>
-        <tr>
-            <td>path</td> 
-            <td>-l, -lo, -ls</td>
-            <td>p</td>
-        </tr>
-    </tbody>
-</table>
+**Is a command line tool!** You dont have to install it as a dependency.
+
+## Things to see 👀
+
+- Commands:
+    - [create](#create)
+        - [path](#path)
+        - [api](#api)
+- [Tools used in this project](#tools-used-by-this-library)
 
 ### Create
 
 Creates files, see below al the commands available and documentation.
 
-#### Path path \<name\>
+#### Path
 
-Creates a path with a **+page.svelte** and **+page.server.js|.ts** file inside, by default it creates the files in **src/routes** folder, you can provide a relative route to create the files, here are some examples:
+By default all paths created by this command will be created under the folder **src/routes**
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Arguments</th>
+        </tr>
+        <tr>
+            <th>Argument</th>
+            <th>Description</th>
+            <th>Valid Values</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name or names of the path to be created</td>
+            <td>name | path/name | path/"("group")/name" | path/[slug]/name | if no value is provided will ask for a name</td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Flags</th>
+        </tr>
+        <tr>
+            <th>Flag</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>--laout | -l</td>
+            <td>Adds to the path with a layout file inside of it</td>
+        </tr>
+        <tr>
+            <td>--layout-only | -lo</td>
+            <td>Creates the path only with the layout file, useful when you want to create a path with a layout and inside of it a path with all the files: blog/+layout.svelte and after that blog/post/+page.svelte</td>
+        </tr>
+        <tr>
+            <td>--layout-server | -ls</td>
+            <td>Adds to the path a layout server file with a load function</td>
+        </tr>
+    </tbody>
+</table>
+
+#### Description
+Creates a path under **src/routes** folder, by default the command will generate **+page.svelte** and **+page.server.js|ts** with a load function inside of it, you can extend the command with flags to add **layout files, layout server files or only layout files**  
 
 - Alias: c p
 
@@ -52,27 +97,111 @@ This comand will create the next path **./src/routes/name** with **+page.svelte*
 You can create sub routes too:
 
 ```bash
-$ ssc path name/test/ssc
+$ ssc create path name/test/ssc
 ```
 Create a route with a slug:
 ```bash
-$ ssc path name/[slug]/ssc
+$ ssc create path name/[slug]/ssc
 ```
 
 
 Grouping routes:
 
 ```bash
-$ ssc path name/"("group")"/test
+$ ssc create path name/"("group")"/test
 ```
 And it will create the path: **routes/name/(group)/test**
 | :exclamation: Grouping routes                                                                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | The command line has some limitation for example you cannot create a group of route **routes/(group)/test** it will throw an error, at least in windows console you can scape the characters |
 
+#### Api
 
+By default all paths created by this command will be created under the folder **src/api**
 
-### Tools used by this library
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Arguments</th>
+        </tr>
+        <tr>
+            <th>Argument</th>
+            <th>Description</th>
+            <th>Valid Values</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name or path of the path to be created</td>
+            <td>name | path/name | path/"("group")/name" | path/[slug]/name | if no value is provided will ask for a name</td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Flags</th>
+        </tr>
+        <tr>
+            <th>Flag</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>--crud | -c</td>
+            <td>Generates the server file with crud operations</td>
+        </tr>
+        <tr>
+            <td>--get | -g</td>
+            <td>Adds to the file a GET operation</td>
+        </tr>
+        <tr>
+            <td>--post | -p</td>
+            <td>Adds to the file a POST operation</td>
+        </tr>
+        <tr>
+            <td>--put | -pt</td>
+            <td>Adds to the file a PUT operation</td>
+        </tr>
+        <tr>
+            <td>--patch | -pa</td>
+            <td>Adds to the file a PUT operation</td>
+        </tr>
+        <tr>
+            <td>--delete | -d</td>
+            <td>Adds to the file a DELETE operation</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Combine all this flags to create the server file you need, see examples below</td>
+        </tr>
+    </tfoot>
+</table>
+
+#### Examples
+
+- Create a empty server file:
+```
+$ ssc create api name
+```
+- Create a server file with crud operations:
+```
+$ ssc create api name -c
+```
+- Create a server file with different operations:
+```
+$ ssc create api name -g
+```
+Generates the file with a GET operation
+```
+$ ssc create api name -g -p -d
+```
+Generates the file with GET, POST and DELETE operations
+
+### Tools used in this library
 - [commander.js](https://github.com/tj/commander.js)
 - [inquirer.js](https://github.com/SBoudrias/Inquirer.js)
 - [eta.js](https://github.com/eta-dev/eta)

@@ -19,9 +19,6 @@ dependencies:
     version: 9.2.10
 
 devDependencies:
-  '@playwright/test':
-    specifier: ^1.37.0
-    version: 1.37.0
   '@types/inquirer':
     specifier: ^9.0.3
     version: 9.0.3
@@ -661,17 +658,6 @@ packages:
     resolution: {integrity: sha512-yN599ZBuMPPK4tdoToLlvgJB4CLK8fGl7ntfy0Wn7U6ttNvHYurd81bfUiK/6sMkiIwm65R6ck4L6+Y3DfVbNQ==}
     engines: {node: '>= 0.4'}
     dev: false
-
-  /@playwright/test@1.37.0:
-    resolution: {integrity: sha512-181WBLk4SRUyH1Q96VZl7BP6HcK0b7lbdeKisn3N/vnjitk+9HbdlFz/L5fey05vxaAhldIDnzo8KUoy8S3mmQ==}
-    engines: {node: '>=16'}
-    hasBin: true
-    dependencies:
-      '@types/node': 20.4.10
-      playwright-core: 1.37.0
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -2238,12 +2224,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
-    dev: true
-
-  /playwright-core@1.37.0:
-    resolution: {integrity: sha512-1c46jhTH/myQw6sesrcuHVtLoSNfJv8Pfy9t3rs6subY7kARv0HRw5PpyfPYPpPtQvBOmgbE6K+qgYUpj81LAA==}
-    engines: {node: '>=16'}
-    hasBin: true
     dev: true
 
   /pretty-format@29.6.2:

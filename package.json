@@ -1,7 +1,7 @@
 {
   "name": "super-sveltekit-cli",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.2.0",
+  "description": "Super Sveltekit CLI is a command line tool for the Sveltekit framework. The idea behind this tool is to facilitate the creation of routes and integration of libraries and services.",
   "type": "module",
   "bin": {
     "ssc": "dist/index.js"
@@ -12,9 +12,9 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "add-templates": "copyfiles -u -l 1 src/templates/**/* dist"
   },
-  "keywords": [],
+  "keywords": ["svelte","kit","cli","tool","sveltekit","command","routes","code-generation"],
   "author": "Andrés Carmona Lozano",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "commander": "^11.0.0",
     "copyfiles": "^2.4.1",
@@ -22,7 +22,6 @@
     "inquirer": "^9.2.10"
   },
   "devDependencies": {
-    "@playwright/test": "^1.37.0",
     "@types/inquirer": "^9.0.3",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.10",

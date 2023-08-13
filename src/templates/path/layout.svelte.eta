@@ -1,6 +1,7 @@
 <script>
-    //Cool stuff here
+    export let data;
 </script>
 
+layout {data.pathName} created!
 
 <slot/>
