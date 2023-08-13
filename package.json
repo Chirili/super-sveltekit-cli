@@ -1,6 +1,6 @@
 {
   "name": "super-sveltekit-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Super Sveltekit CLI is a command line tool for the Sveltekit framework. The idea behind this tool is to facilitate the creation of routes and integration of libraries and services.",
   "type": "module",
   "bin": {

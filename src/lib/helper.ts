@@ -2,7 +2,7 @@ import { Eta } from "eta";
 import fs from "fs";
 import {  LOCAL_SRC_PATH, PROJECT_SRC_PATH } from "../constants.js";
 
-export const eta = new Eta({ views: `${PROJECT_SRC_PATH}/src/templates` });
+export const eta = new Eta({ views: `${PROJECT_SRC_PATH}/templates` });
 
 /**
  * Generates a file from a template file path in the selected path
@@ -27,7 +27,7 @@ export const generateFileFromTemplate = (
   if(!route.endsWith("/")){
     route+= "/"
   }
-  
+
   route = LOCAL_SRC_PATH + route
   if (!fs.existsSync(route)) {
     // Checks if folder exists
