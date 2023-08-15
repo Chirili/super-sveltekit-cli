@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { addPathCommand } from "./path.js";
+import { addRouteCommand } from "./route.js";
 import { addApiCommand } from "./api.js";
 
 /**
@@ -10,7 +10,8 @@ export const addCreateCommands = (ssc: Command) => {
   const createCommand = ssc
     .command("create")
     .description("Creates files and code for Sveltekit")
-    .alias("c");
-    addPathCommand(createCommand)
+    .addHelpCommand('route|r [options] [name|path]','Creates a new Sveltekit route o path with files inside of it')
+    .alias("c")
+    addRouteCommand(createCommand)
     addApiCommand(createCommand)
-};
+  };

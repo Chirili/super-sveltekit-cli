@@ -5,3 +5,12 @@ export async function load({ params }) {
         pathName: "<%= it.name %>"
     };
 }
+
+<% if(it.action) {%>
+/** @type {import('./$types').Actions} */
+export const actions = {
+  <%= it.action %>: async (event) => {
+    // Action stuff
+  }
+};
+<% } %>

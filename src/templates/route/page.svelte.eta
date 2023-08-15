@@ -1,0 +1,17 @@
+<% if (it.ts) { %>
+<script lang="ts">
+<% } else { %>
+<script>
+<% } %>
+  export let data;
+</script>
+<h1>{data.pathName} created!</h1>
+
+<% if (it.action) { %>
+<% if (it.action != true) { %>
+<form method="POST" action="?<%= it.action %>">
+<% } else{ %>
+<form method="POST">
+<% } %>
+</form>
+<% } %>

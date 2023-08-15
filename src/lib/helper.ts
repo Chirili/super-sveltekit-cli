@@ -46,5 +46,7 @@ export const generateFileFromTemplate = (
     // Checks if file already exists
     fs.writeFileSync(route + fileNameExtension, fileDataString);
     console.log(`➕ File ${fileNameExtension} created at ${route}`);
+  }else{
+    console.log(`Skipped file ${fileNameExtension} creation already exists at ${route}`);
   }
 };

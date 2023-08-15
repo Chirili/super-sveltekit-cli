@@ -2,8 +2,8 @@
 
 import { ssc } from "./commands/main.js";
 
-export const execute = () => {
-    ssc.parse(process.argv);
+export const execute = (args: NodeJS.Process["argv"]) => {
+    ssc.parse(args);
 }
 
-execute();
+execute(process.argv);

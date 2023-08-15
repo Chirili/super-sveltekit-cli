@@ -12,5 +12,9 @@
     
   },
   "include": ["./src/**/*","./src/templates/**/*.eta"],
-  "exclude": ["./dist"]
+  "exclude": ["./dist"],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true,
+  }
 }

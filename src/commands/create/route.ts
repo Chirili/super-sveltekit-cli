@@ -2,27 +2,28 @@ import inquirer from "inquirer";
 import { generateFileFromTemplate } from "../../lib/helper.js";
 import { Command } from "commander";
 
-export const addPathCommand = (ssc: Command) => {
+export const addRouteCommand = (ssc: Command) => {
   ssc
-    .command("path")
-    .description("Genereates a SvelteKit path with basic files")
-    .alias("p")
-    .option("-l, --layout", "Creates the path with a +layout.svelte")
+    .command("route")
+    .description("Genereates a SvelteKit route with basic files")
+    .alias("r")
+    .option("-l, --layout", "Creates the route with a +layout.svelte")
     .option(
       "-lo,--layout-only",
-      "Creates the path only with a layout combine it with -ls to create the server file"
+      "Creates the route only with a layout combine it with -ls to create the server file"
     )
     .option(
       "-ls,--layout-server",
-      "Creates the path with +layout.server.js|.ts"
+      "Creates the route with +layout.server.js|.ts"
     )
+    .option('-a, --action [action]',"Adds an action to the route, if no name provided default will be used as fallback","default")
     .argument("[name]")
     .action(async (name, options) => {
+      console.log(options);
       if (name) {
         generatePath(name, options);
         return;
       }
-
       await inquirer
         .prompt([
           {
@@ -54,32 +55,32 @@ export const generatePath = (name: string, flags: CreateCommandFlags) => {
   name = "/routes/" + name
   if (!flags.layoutOnly) {
     generateFileFromTemplate(
-      "/path/page.svelte.eta",
+      "/route/page.svelte.eta",
       name,
-      { name },
+      { name, ...flags },
       "+page.svelte"
     );
     generateFileFromTemplate(
-      "/path/page.server.eta",
+      "/route/page.server.eta",
       name,
-      { name },
+      { name, ...flags },
       "+page.server.js"
     );
   }
 
   if (flags.layout || flags.layoutOnly) {
     generateFileFromTemplate(
-      "/path/layout.svelte.eta",
+      "/route/layout.svelte.eta",
       name,
-      { name },
+      { name, ...flags },
       "+layout.svelte"
     );
   }
   if (flags.layoutServer) {
     generateFileFromTemplate(
-      "/path/layout.server.eta",
+      "/route/layout.server.eta",
       name,
-      { name },
+      { name, ...flags },
       "+layout.server.js"
     );
   }
@@ -89,5 +90,6 @@ export type CreateCommandFlags = {
   layoutServer?: boolean;
   layout?: boolean;
   layoutOnly?: boolean;
+  action?: boolean|string;
 };
 export default generatePath;

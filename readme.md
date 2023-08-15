@@ -10,6 +10,26 @@ The good thing is that you can start using it since it is not a dependency but a
 
 The command will automatically watch for typescript, so it will generate server.js or server.ts for example depending of your setup.
 
+## Things to see 👀
+- [Features](#features)
+- [Next steps 🚀](#next-steps)
+- [Commands](#commands):
+    - [create](#create)
+        - [route](#route)
+        - [api](#api)
+
+## Features
+
+- Routes with files generation: +page.server.js|ts(with load function and optional action), +page.svelte(with optional action form) and optional: +layout.svelte and +layout.server.ts
+- Api endpoints and routes: generate api endpoints with routes and http operations inside of it: GET,POST,PUT,PATCH,DELETE.
+
+## Next steps
+
+- Improve cli messages
+- New command to generate actions
+- Ask for sveltekit project scaffold when the command is used outside a sveltekit project.
+- More commands...
+
 ## Installation 🛬
 
 ```
@@ -22,19 +42,13 @@ pnpm i -g super-sveltekit-cli
 
 **Is a command line tool!** You dont have to install it as a dependency.
 
-## Things to see 👀
-
-- Commands:
-    - [create](#create)
-        - [path](#path)
-        - [api](#api)
-- [Tools used in this project](#tools-used-by-this-library)
+## Commands
 
 ### Create
 
 Creates files, see below al the commands available and documentation.
 
-#### Path
+#### Route
 
 By default all paths created by this command will be created under the folder **src/routes**
 
@@ -69,51 +83,51 @@ By default all paths created by this command will be created under the folder **
     </thead>
     <tbody>
         <tr>
-            <td>--laout | -l</td>
-            <td>Adds to the path with a layout file inside of it</td>
+            <td>--layout | -l</td>
+            <td>Adds to the route a layout file inside of it</td>
         </tr>
         <tr>
             <td>--layout-only | -lo</td>
-            <td>Creates the path only with the layout file, useful when you want to create a path with a layout and inside of it a path with all the files: blog/+layout.svelte and after that blog/post/+page.svelte</td>
+            <td>Creates the route only with the layout file, useful when you want to create a route with a layout and inside of it a route with all the files: blog/+layout.svelte and after that blog/post/+page.svelte</td>
         </tr>
         <tr>
             <td>--layout-server | -ls</td>
-            <td>Adds to the path a layout server file with a load function</td>
+            <td>Adds to the route a layout server file with a load function</td>
         </tr>
     </tbody>
 </table>
 
 #### Description
-Creates a path under **src/routes** folder, by default the command will generate **+page.svelte** and **+page.server.js|ts** with a load function inside of it, you can extend the command with flags to add **layout files, layout server files or only layout files**  
+Creates a route under **src/routes** folder, by default the command will generate **+page.svelte** and **+page.server.js|ts** with a load function inside of it, you can extend the command with flags to add **layout files, layout server files or only layout files**  
 
 - Alias: c p
 
 ```bash
-$ ssc create path name
+$ ssc create route name
 ```
 
-This comand will create the next path **./src/routes/name** with **+page.svelte** and **+page.server.js** files inside of it
+This comand will create the next route **./src/routes/name** with **+page.svelte** and **+page.server.js** files inside of it
 
 You can create sub routes too:
 
 ```bash
-$ ssc create path name/test/ssc
+$ ssc create route name/test/ssc
 ```
 Create a route with a slug:
 ```bash
-$ ssc create path name/[slug]/ssc
+$ ssc create route name/[slug]/ssc
 ```
 
 
 Grouping routes:
 
 ```bash
-$ ssc create path name/"("group")"/test
+$ ssc create route name/"("group")"/test
 ```
-And it will create the path: **routes/name/(group)/test**
+And it will create the route: **routes/name/(group)/test**
 | :exclamation: Grouping routes                                                                                                                                                                |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The command line has some limitation for example you cannot create a group of route **routes/(group)/test** it will throw an error, at least in windows console you can scape the characters |
+| The command line has some limitation for example you cannot create a group of routes this way **routes/(group)/route-name** the command line will throw an error, you must scape the parenthesis with double quotes **routes/"("group")"/route-name** |
 
 #### Api
 
@@ -200,8 +214,3 @@ Generates the file with a GET operation
 $ ssc create api name -g -p -d
 ```
 Generates the file with GET, POST and DELETE operations
-
-### Tools used in this library
-- [commander.js](https://github.com/tj/commander.js)
-- [inquirer.js](https://github.com/SBoudrias/Inquirer.js)
-- [eta.js](https://github.com/eta-dev/eta)
